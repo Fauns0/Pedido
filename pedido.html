@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/pedido.css">
+    <title>Pedido</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Aceita namorar comigo?</h1>
+        <form action="feliz.html">
+            <div class="button-container">
+                <input type="submit" value="Sim" id="Sim">
+                <input type="button" value="Não" id="Nao">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        if (localStorage.getItem('naoClicado') === 'true') {
+            document.getElementById("Nao").addEventListener("mouseover", function() {
+                let button = this;
+                let buttonWidth = button.offsetWidth;
+                let buttonHeight = button.offsetHeight;
+                let maxX = window.innerWidth - buttonWidth - 460;
+                let maxY = window.innerHeight - buttonHeight - 460;
+
+                let newX = Math.random(2) * maxX;
+                let newY = Math.random(2) * maxY;
+
+                button.style.position = "absolute";
+                button.style.left = `${newX}px`;
+                button.style.top = `${newY}px`;
+            });
+        }
+
+        document.getElementById("Nao").addEventListener("click", function() {
+            localStorage.setItem('naoClicado', 'true');
+            window.location.href = "404.html"; 
+        });
+
+        document.getElementById("Sim").addEventListener("click", function() {
+            window.location.href = "feliz.html"; 
+        })
+    </script>
+</body>
+</html>
